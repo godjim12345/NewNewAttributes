@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.gam0zing.newnew_attributes.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "newnew_attributes.refmap.json",
+  "mixins": [
+
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
