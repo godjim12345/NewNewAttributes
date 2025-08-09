@@ -15,9 +15,11 @@ public class AutoShootHandler {
         if (event.phase != TickEvent.Phase.END) return;
 
         Player player = event.player;
-        ItemStack heldItem = player.getUseItem();
 
+        if (player.level().isClientSide) return;
         if (!(player.getAttribute(NNAttributes.AUTO_FIRE.get()).getValue() > 0)) return;
+
+        ItemStack heldItem = player.getUseItem();
 
         if (heldItem.getItem() instanceof BowItem) {
             //检测拉力
