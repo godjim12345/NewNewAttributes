@@ -14,7 +14,8 @@ public class PlayerRespawnHandler {
         if (player.level().isClientSide) return;
 
         setHealth(player);
-
+        setFood(player);
+        setSaturation(player);
 
     }
 
