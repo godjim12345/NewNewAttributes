@@ -18,14 +18,14 @@ public class NNAttributes {
 
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.Keys.ATTRIBUTES, NewNewAttributes.MODID);
 
-    public static final RegistryObject<Attribute> AUTO_FIRE = createAttribute("auto_fire");
-    public static final RegistryObject<Attribute> RESPAWN_HEALTH_RATE = createAttribute("respawn_health_rate");
-    public static final RegistryObject<Attribute> RESPAWN_FOOD_RATE = createAttribute("respawn_food_rate");
-    public static final RegistryObject<Attribute> RESPAWN_SATURATION_RATE = createAttribute("respawn_saturation_rate"); //saturation
+    public static final RegistryObject<Attribute> AUTO_FIRE = createAttribute("auto_fire", 0, 0, 1);
+    public static final RegistryObject<Attribute> RESPAWN_HEALTH_RATE = createAttribute("respawn_health_rate", 1, 0, 1);
+    public static final RegistryObject<Attribute> RESPAWN_FOOD_RATE = createAttribute("respawn_food_rate", 1, 0, 1);
+    public static final RegistryObject<Attribute> RESPAWN_SATURATION_RATE = createAttribute("respawn_saturation_rate", 1, 0, 1024); //saturation
     //public static final RegistryObject<Attribute> RESPAWN_STATUS_RATE = createAttribute("respawn_status_rate");
 
-    public static RegistryObject<Attribute> createAttribute(final String id) {
-        return ATTRIBUTES.register(id, () -> new RangedAttribute("attribute.name." + id, 0, 0, MAX).setSyncable(true));
+    public static RegistryObject<Attribute> createAttribute(final String id, double base, double min, double max) {
+        return ATTRIBUTES.register(id, () -> new RangedAttribute("attribute.name." + id, base, min, max).setSyncable(true));
     }
 
     @SubscribeEvent

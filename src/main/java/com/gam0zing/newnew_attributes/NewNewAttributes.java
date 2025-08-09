@@ -1,6 +1,6 @@
 package com.gam0zing.newnew_attributes;
 
-import com.gam0zing.newnew_attributes.event.AutoShootHandler;
+import com.gam0zing.newnew_attributes.event.BowAutoShootHandler;
 import com.gam0zing.newnew_attributes.event.PlayerRespawnHandler;
 import com.gam0zing.newnew_attributes.registry.NNAttributes;
 import com.mojang.logging.LogUtils;
@@ -23,7 +23,7 @@ public class NewNewAttributes
 
         NNAttributes.ATTRIBUTES.register(modEventBus);
 
-        MinecraftForge.EVENT_BUS.register(new AutoShootHandler());
+        MinecraftForge.EVENT_BUS.register(new BowAutoShootHandler());
         MinecraftForge.EVENT_BUS.register(new PlayerRespawnHandler());
 
     }

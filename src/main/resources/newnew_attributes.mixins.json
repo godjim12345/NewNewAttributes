@@ -4,7 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "newnew_attributes.refmap.json",
   "mixins": [
-
+    "CrossbowItemMixin"
   ],
   "client": [
   ],
