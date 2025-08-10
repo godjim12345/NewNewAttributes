@@ -28,8 +28,7 @@ public class BowAutoShootHandler {
     volatile int currentMaxTicks = 0;
     final int MAX_LAYBACK_TICKS = 1;
     //适配神化模组的叠装弩箭附魔
-    boolean hasApotheosis = ModList.get().isLoaded("apotheosis");
-    final int CRESCENDO_MAX_LAYBACK_TICKS = 5;
+    final int CRESCENDO_MAX_LAYBACK_TICKS = 4;
 
     //神化附魔叠装弩箭注册名：apotheosis:crescendo
 
@@ -54,13 +53,8 @@ public class BowAutoShootHandler {
                 clientFlag = true;
 
                 //检查是否存在叠装弩箭附魔，替换延迟刻数的最大容忍值
-                if (hasApotheosis) {
-                    if (hasEnchantment(usingItem, "enchantment.apotheosis.crescendo")) {
-                        currentMaxTicks = CRESCENDO_MAX_LAYBACK_TICKS;
-                    }
-                    else {
-                        currentMaxTicks = MAX_LAYBACK_TICKS;
-                    }
+                if (hasEnchantment(usingItem, "enchantment.apotheosis.crescendo")) {
+                    currentMaxTicks = CRESCENDO_MAX_LAYBACK_TICKS;
                 }
                 else {
                     currentMaxTicks = MAX_LAYBACK_TICKS;
