@@ -1,6 +1,7 @@
 package com.gam0zing.newnew_attributes.event;
 
 import com.gam0zing.newnew_attributes.registry.NNAttributes;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
