@@ -1,14 +1,19 @@
 package com.gam0zing.newnew_attributes.event;
 
 import com.gam0zing.newnew_attributes.registry.NNAttributes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+
+import java.util.Map;
 
 public class BowAutoShootHandler {
 
@@ -17,7 +22,14 @@ public class BowAutoShootHandler {
     volatile boolean severFlag = false;
     //客户端标记位
     volatile boolean clientFlag = false;
+    //允许延迟Tick数
+    volatile int laybackTicks = 0;
+    volatile int currentMaxTicks = 0;
+    final int MAX_LAYBACK_TICKS = 1;
+    //适配神化模组的叠装弩箭附魔
+    final int CRESCENDO_MAX_LAYBACK_TICKS = 5;
 
+    //神化附魔叠装弩箭注册名：apotheosis:crescendo
 
     @SubscribeEvent
     public void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -36,8 +48,19 @@ public class BowAutoShootHandler {
         if (player.level().isClientSide) {
             //防中断步骤2：来到赋值标记后的下一刻
             //如果检测为弩，则赋值true，否则赋值false
-            if (usingItem.getItem() instanceof CrossbowItem) clientFlag = true;
-            else clientFlag = false;
+            if (usingItem.getItem() instanceof CrossbowItem crossbow) {
+                clientFlag = true;
+
+                if (hasEnchantment(usingItem, "enchantment.apotheosis.crescendo")) {
+                    currentMaxTicks = CRESCENDO_MAX_LAYBACK_TICKS;
+                }
+                else {
+                    currentMaxTicks = MAX_LAYBACK_TICKS;
+                }
+            }
+            else {
+                clientFlag = false;
+            }
 
             //System.out.println("客户端：" + clientFlag);
         }
@@ -58,11 +81,16 @@ public class BowAutoShootHandler {
 
             //防中断步骤3：判断标记位并重启服务器物品使用
             if (clientFlag && !severFlag) {
+                if (laybackTicks < currentMaxTicks) laybackTicks++;
+                else {
+                    //System.out.println("防中断启用");
 
-                //System.out.println("防中断启用");
-
-                InteractionHand hand = serverPlayer.getUsedItemHand();
-                serverPlayer.startUsingItem(hand);
+                    InteractionHand hand = serverPlayer.getUsedItemHand();
+                    serverPlayer.startUsingItem(hand);
+                }
+            }
+            else {
+                laybackTicks = 0;
             }
 
             //弩
@@ -86,5 +114,18 @@ public class BowAutoShootHandler {
                 }
             }
         }
+    }
+
+    //通过本地化键名查找附魔
+    public boolean hasEnchantment(ItemStack stack, String descriptionId) {
+        if (stack.isEmpty()) return false;
+
+        Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(stack);
+        for (Enchantment enchant : enchantments.keySet()) {
+            if (enchant.getDescriptionId().equals(descriptionId)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
