@@ -2,5 +2,9 @@
   "attribute.name.auto_fire": "自动扳机",
   "attribute.name.respawn_health_rate": "重生生命值比例",
   "attribute.name.respawn_food_rate": "重生饥饿值比例",
-  "attribute.name.respawn_saturation_rate": "重生饱和度比例"
+  "attribute.name.respawn_saturation_rate": "重生饱和度比例",
+  "attribute.name.damage_scale": "伤害倍数",
+  "attribute.name.looting_enchantment_scale": "抢夺等级倍数",
+  "attribute.name.looting_enchantment_addition": "抢夺等级加数",
+  "attribute.name.loot_scale": "战利品倍数"
 }

@@ -2,5 +2,9 @@
   "attribute.name.auto_fire": "Auto Fire",
   "attribute.name.respawn_health_rate": "Respawn Health Rate",
   "attribute.name.respawn_food_rate": "Respawn Food Rate",
-  "attribute.name.respawn_saturation_rate": "Respawn Saturation Rate"
+  "attribute.name.respawn_saturation_rate": "Respawn Saturation Rate",
+  "attribute.name.damage_scale": "Damage",
+  "attribute.name.looting_enchantment_scale": "Looting Level Multiplier",
+  "attribute.name.looting_enchantment_addition": "Looting Level Addition",
+  "attribute.name.loot_scale": "Loot Multiplier"
 }

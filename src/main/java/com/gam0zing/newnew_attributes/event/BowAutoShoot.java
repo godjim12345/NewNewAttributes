@@ -1,7 +1,6 @@
 package com.gam0zing.newnew_attributes.event;
 
-import com.gam0zing.newnew_attributes.registry.NNAttributes;
-import net.minecraft.network.chat.Component;
+import com.gam0zing.newnew_attributes.registry.ModAttributes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -12,11 +11,10 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 
 import java.util.Map;
 
-public class BowAutoShootHandler {
+public class BowAutoShoot {
 
     volatile ItemStack usingItem;
     //服务端标记位
@@ -79,7 +77,7 @@ public class BowAutoShootHandler {
         //自动扳机核心逻辑，在服务端中执行
         if (!player.level().isClientSide && player instanceof ServerPlayer serverPlayer) {
             //检查自动扳机属性
-            if (!(serverPlayer.getAttribute(NNAttributes.AUTO_FIRE.get()).getValue() > 0)) return;
+            if (!(serverPlayer.getAttribute(ModAttributes.AUTO_FIRE.get()).getValue() > 0)) return;
 
             //防中断步骤3：判断标记位并重启服务器物品使用
             if (clientFlag && !severFlag) {

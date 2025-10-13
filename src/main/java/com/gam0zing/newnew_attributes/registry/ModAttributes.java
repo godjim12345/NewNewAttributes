@@ -13,16 +13,17 @@ import net.minecraftforge.registries.RegistryObject;
 
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class NNAttributes {
-    public static final int MAX = 1024;
-
+public class ModAttributes {
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.Keys.ATTRIBUTES, NewNewAttributes.MODID);
 
     public static final RegistryObject<Attribute> AUTO_FIRE = createAttribute("auto_fire", 0, 0, 1);
     public static final RegistryObject<Attribute> RESPAWN_HEALTH_RATE = createAttribute("respawn_health_rate", 1, 0, 1);
     public static final RegistryObject<Attribute> RESPAWN_FOOD_RATE = createAttribute("respawn_food_rate", 1, 0, 1);
     public static final RegistryObject<Attribute> RESPAWN_SATURATION_RATE = createAttribute("respawn_saturation_rate", 1, 0, 1024); //saturation
-    //public static final RegistryObject<Attribute> RESPAWN_STATUS_RATE = createAttribute("respawn_status_rate");
+    public static final RegistryObject<Attribute> DAMAGE_SCALE = createAttribute("damage_scale", 1, 0, 1024);
+    public static final RegistryObject<Attribute> LOOTING_ENCHANTMENT_SCALE = createAttribute("looting_enchantment_scale", 1, 0, 10);
+    public static final RegistryObject<Attribute> LOOTING_ENCHANTMENT_ADDITION = createAttribute("looting_enchantment_addition", 0, 0, 255);
+    public static final RegistryObject<Attribute> LOOT_SCALE = createAttribute("loot_scale", 1, 0, 255);
 
     public static RegistryObject<Attribute> createAttribute(final String id, double base, double min, double max) {
         return ATTRIBUTES.register(id, () -> new RangedAttribute("attribute.name." + id, base, min, max).setSyncable(true));
