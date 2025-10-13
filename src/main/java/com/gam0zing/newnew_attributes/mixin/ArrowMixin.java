@@ -55,7 +55,7 @@ public abstract class ArrowMixin extends AbstractArrow {
         //模仿原版药水云的实现方法，在施加瞬间效果时调用效果的applyInstantenousEffect方法
         for (MobEffectInstance effectInstance : allEffects) {
             if (effectInstance.getEffect().isInstantenous()) {
-                effectInstance.getEffect().applyInstantenousEffect(this, this.getOwner(), pLiving, effectInstance.getAmplifier(), 0.67d);
+                effectInstance.getEffect().applyInstantenousEffect(this, this.getOwner(), pLiving, effectInstance.getAmplifier(), 1d);
             } else {
                 pLiving.addEffect(new MobEffectInstance(effectInstance), this);
             }
