@@ -6,5 +6,8 @@
   "attribute.name.damage_scale": "Damage",
   "attribute.name.looting_enchantment_scale": "Looting Level Multiplier",
   "attribute.name.looting_enchantment_addition": "Looting Level Addition",
-  "attribute.name.loot_scale": "Loot Multiplier"
+  "attribute.name.loot_scale": "Loot Multiplier",
+  "attribute.name.invulnerable_time": "Invulnerable Time",
+  "attribute.name.hurt_limit": "Hurt Limit",
+  "attribute.name.percentage_natural_healing": "Percentage Natural Healing"
 }

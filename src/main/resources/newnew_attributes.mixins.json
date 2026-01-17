@@ -5,7 +5,8 @@
   "refmap": "newnew_attributes.refmap.json",
   "mixins": [
     "ArrowMixin",
-    "DamageSourcesAccessor"
+    "DamageSourcesAccessor",
+    "LivingEntityMixin"
   ],
   "client": [
   ],

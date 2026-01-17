@@ -24,6 +24,9 @@ public class ModAttributes {
     public static final RegistryObject<Attribute> LOOTING_ENCHANTMENT_SCALE = createAttribute("looting_enchantment_scale", 1, 0, 10);
     public static final RegistryObject<Attribute> LOOTING_ENCHANTMENT_ADDITION = createAttribute("looting_enchantment_addition", 0, 0, 255);
     public static final RegistryObject<Attribute> LOOT_SCALE = createAttribute("loot_scale", 1, 0, 255);
+    public static final RegistryObject<Attribute> INVULNERABLE_TIME = createAttribute("invulnerable_time", 20, 0, Integer.MAX_VALUE);
+    public static final RegistryObject<Attribute> HURT_LIMIT = createAttribute("hurt_limit", -1, -1, Float.MAX_VALUE);
+    public static final RegistryObject<Attribute> PERCENTAGE_NATURAL_HEALING = createAttribute("percentage_natural_healing", 0, 0, 10);
 
     public static RegistryObject<Attribute> createAttribute(final String id, double base, double min, double max) {
         return ATTRIBUTES.register(id, () -> new RangedAttribute("attribute.name." + id, base, min, max).setSyncable(true));

@@ -6,10 +6,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class PlayerRespawn {
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
 
         Player player = event.getEntity();
@@ -22,7 +23,7 @@ public class PlayerRespawn {
     }
 
     //玩家克隆事件，运行于死亡后，重生前
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onPlayerClone(PlayerEvent.Clone event) {
         if (event.getEntity().level().isClientSide()) return;
         if (event.isWasDeath()) { // 只有在死亡重生时才执行

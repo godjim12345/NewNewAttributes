@@ -1,9 +1,6 @@
 package com.gam0zing.newnew_attributes;
 
-import com.gam0zing.newnew_attributes.event.BowAutoShoot;
-import com.gam0zing.newnew_attributes.event.DamageScale;
-import com.gam0zing.newnew_attributes.event.LootingEnchantmentModify;
-import com.gam0zing.newnew_attributes.event.PlayerRespawn;
+import com.gam0zing.newnew_attributes.event.*;
 import com.gam0zing.newnew_attributes.registry.ModAttributes;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
@@ -27,8 +24,7 @@ public class NewNewAttributes
 
         MinecraftForge.EVENT_BUS.register(new BowAutoShoot());
         MinecraftForge.EVENT_BUS.register(new PlayerRespawn());
-        MinecraftForge.EVENT_BUS.register(new DamageScale());
-        MinecraftForge.EVENT_BUS.register(new LootingEnchantmentModify());
-
+        MinecraftForge.EVENT_BUS.register(new DamageHandler());
+        MinecraftForge.EVENT_BUS.register(new LootingModify());
     }
 }

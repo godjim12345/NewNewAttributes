@@ -6,5 +6,8 @@
   "attribute.name.damage_scale": "伤害倍数",
   "attribute.name.looting_enchantment_scale": "抢夺等级倍数",
   "attribute.name.looting_enchantment_addition": "抢夺等级加数",
-  "attribute.name.loot_scale": "战利品倍数"
+  "attribute.name.loot_scale": "战利品倍数",
+  "attribute.name.invulnerable_time": "无敌帧",
+  "attribute.name.hurt_limit": "限伤",
+  "attribute.name.percentage_natural_healing": "百分比生命回复"
 }

@@ -7,13 +7,14 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LootingLevelEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-public class LootingEnchantmentModify {
+public class LootingModify {
 
     public static final RandomSource RANDOM = RandomSource.createNewThreadLocalInstance();
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public void scaleLootingEnchantment(LootingLevelEvent event) {
         if (event.getEntity().level().isClientSide()) return;
         if (event.getDamageSource() == null || event.getDamageSource().getEntity() == null) return;
@@ -26,7 +27,7 @@ public class LootingEnchantmentModify {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public void scaleLooting(LivingDropsEvent event) {
         if (event.getEntity().level().isClientSide()) return;
         if (event.getSource() == null || event.getSource().getEntity() == null) return;
